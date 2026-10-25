@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
-  final String userName;
-  final String userEmail;
+  final String userEmail; // Variabel untuk menerima email dari login
 
-  const ProfileScreen({
-    super.key,
-    required this.userName,
-    required this.userEmail,
-  });
+  const ProfileScreen({super.key, required this.userEmail});
 
   @override
   Widget build(BuildContext context) {
@@ -27,24 +22,20 @@ class ProfileScreen extends StatelessWidget {
               child: Icon(Icons.person, size: 50, color: Colors.white),
             ),
             const SizedBox(height: 20),
-            Text(
-              userName,
+            const Text(
+              'Iqbal Miftahul Fikri', 
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
             Text(
-              userEmail,
+              userEmail, // Menampilkan email yang diinput saat login
               style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
             const SizedBox(height: 40),
             ElevatedButton.icon(
               onPressed: () {
                 // Logout: Kembali ke halaman login dan hapus riwayat rute navigasi
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  '/login',
-                  (route) => false,
-                );
+                Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
               },
               icon: const Icon(Icons.logout),
               label: const Text('Logout'),
@@ -52,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                 backgroundColor: Colors.red,
                 foregroundColor: Colors.white,
               ),
-            ),
+            )
           ],
         ),
       ),

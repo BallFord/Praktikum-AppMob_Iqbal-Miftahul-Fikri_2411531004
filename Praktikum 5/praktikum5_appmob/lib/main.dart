@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-import 'login_screen.dart';
-import 'database_helper.dart';
+import 'add_transaction_screen.dart';
+import 'login_screen.dart'; 
 
-Future<void> main() async {
-  // Memastikan Flutter siap sebelum database diakses
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // Membuka database lokal dan membuat tabel jika belum ada
-  await DatabaseHelper.instance.database;
-
-  // Menjalankan aplikasi
+void main() {
   runApp(const MyApp());
 }
 
@@ -21,15 +14,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Expense Tracker Final',
-      theme: ThemeData(
-        primarySwatch: Colors.amber,
-      ),
-
-      // Halaman pertama adalah Login
-      initialRoute: '/login',
-
+      theme: ThemeData(primarySwatch: Colors.amber),
+      // MENGGUNAKAN NAMED ROUTES
+      initialRoute: '/login', 
       routes: {
-        '/login': (context) => const LoginScreen(),
+        '/login': (context) => const LoginScreen(), 
+        '/add': (context) => const AddTransactionScreen(),
       },
     );
   }
